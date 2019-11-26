@@ -1,0 +1,56 @@
+<div class="editEmployeeTitleContainer">
+    <div class="">Edit Employee</div>
+  </div>
+  
+  <form>
+    <div class="form-group name">
+      <!-- <label for="name">Name:</label> -->
+      <input type="text"
+             class="form-control input"
+             id="name"
+             name="name"
+             [(ngModel)]="recordEdit.name"
+             placeholder="Name">
+    </div>
+  
+    <div class="form-group name">
+      <!-- <label for="contact">contact:</label> -->
+      <input type="text"
+             class="form-control input"
+             id="contact"
+             name="contact"
+             [(ngModel)]="recordEdit.contact"
+             placeholder="contact">
+    </div>
+
+    <div class="form-group name">
+      <!-- <label for="email">email:</label> -->
+      <input type="text"
+             class="form-control input"
+             id="email"
+             name="email"
+             [(ngModel)]="recordEdit.email"
+             placeholder="email">
+    </div>
+
+    <div class="form-group name">
+      <!-- <label for="position">Position:</label> -->
+      <input type="text"
+             class="form-control input"
+             id="position"
+             name="position"
+             [(ngModel)]="recordEdit.position"
+             placeholder="Position">
+    </div>
+
+     <div class="form-group name">
+      <!-- <label for="address">address:</label> -->
+      <input type="text"
+             class="form-control input"
+             id="address"
+             name="address"
+             [(ngModel)]="recordEdit.address"
+             placeholder="address">
+    </div>
+    <button class="btn-success" type="submit" (click)="updateEmployee()">Update</button>
+  </form>

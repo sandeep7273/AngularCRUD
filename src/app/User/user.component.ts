@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { DataService } from '../service/data.service';
+import { Router } from '@angular/router';
+import { Employee } from '../user.model';
 
 @Component({
   selector: 'app-user',
@@ -7,69 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  newEmployeeClicked = false;
+  records;
 
-  employees = [
-    { name: 'Rakesh', position: 'Front-End Dev'},
-    { name: 'Mohan', position: 'Recruiter Manager'},
-    { name: 'Anshul', position: 'HR Manager'}
-  ];
-
-  color;
-
-  constructor() { }
+  constructor(
+    private service: DataService, private _router: Router) { }
 
   ngOnInit() {
 
+    this.records = this.service.getRecords();
   }
 
-  model: any = {};
-  model2: any = {}; 
-
-  addEmployee() {
-    this.employees.push(this.model);
-    this.model = {};
-  }
+  model2: Employee = new Employee(); 
 
   deleteEmployee(i) {
-    this.employees.splice(i,1);
+    this.service.delete(i)
     console.log(i);
   }
 
   myValue;
 
   editEmployee(editEmployeeInfo) {
-    this.model2.name = this.employees[editEmployeeInfo].name;
-    this.model2.position = this.employees[editEmployeeInfo].position;
+    this.model2.name = this.records[editEmployeeInfo].name;
+    this.model2.contact = this.records[editEmployeeInfo].contact;
+    this.model2.email = this.records[editEmployeeInfo].email;
+    this.model2.position = this.records[editEmployeeInfo].position;
+    this.model2.address = this.records[editEmployeeInfo].address;
     this.myValue = editEmployeeInfo;
+    this.service.addToUpdate(this.model2);
+    this.service.delete(editEmployeeInfo);
+    this._router.navigate(['/edit'])
+
+
   }
 
-  updateEmployee() {
-    let editEmployeeInfo = this.myValue;
-    for(let i = 0; i < this.employees.length; i++) {
-      if(i == editEmployeeInfo) {
-        this.employees[i] = this.model2;
-        this.model2 = {};
-      }
-    }
-  }
-
-
-
-
-
-  addNewEmployeeBtn() {
-    this.newEmployeeClicked = !this.newEmployeeClicked;
-  }
-
-   changeColorOne() {
-     this.color = !this.color;
-     if (this.color) {
-       return '#ffffff';
-     } else {
-      return '#f6f6f6';
-     }
-  }
-
-
+ 
 }
