@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+  
 recordEdit :Employee = new Employee();
   constructor(private service: DataService, private _router: Router) { }
 

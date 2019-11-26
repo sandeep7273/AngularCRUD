@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UserComponent } from './User/user.component';
 import { EntryComponent } from './entry/entry.component';
-import { EditComponent } from './user/edit/edit.component';
+import { EditComponent } from './User/edit/edit.component';
 import { RouterModule, Routes } from '@angular/router';
 
 

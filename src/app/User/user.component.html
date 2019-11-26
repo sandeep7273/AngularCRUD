@@ -2,7 +2,7 @@
 
   
   
-  <div class="tableWrapper">
+  <!-- <div class="tableWrapper">
   <div class="containerTitle">
     <div class="oneTitle">Name</div>
     <div class="oneTitle">Contact</div>
@@ -23,7 +23,29 @@
       <button class="btn-danger" (click)="deleteEmployee(i)">Delete</button>
     </div>
   </div>
-  </div>
+  </div> -->
+
+  <table class="tableWrapper">
+    <thead class="containerTitle">
+      <td class="oneTitle"> Name</td>
+      <td class="twoTitle">Contact</td>
+      <td class="twoTitle">Email</td>
+      <td class="twoTitle">Position</td>
+      <td class="twoTitle">Address</td>
+      <td class="twoTitle">Action</td>
+    </thead>
+    <tr class="containerListItems" *ngFor="let employee of records; let i = index">
+      <td class="one">{{employee.name}}</td>
+      <td class="one">{{employee.contact}}</td>
+      <td class="one">{{employee.email}}</td>
+      <td class="one">{{employee.position}}</td>
+      <td class="one">{{employee.address}}</td>
+      <td class="one">
+          <button class="btn-primary" (click)="editEmployee(i)">Edit</button>
+          <button class="btn-danger" (click)="deleteEmployee(i)">Delete</button> </td>
+
+    </tr>
+  </table>
   
   
   
